@@ -6,19 +6,46 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:orientation="vertical"
-    tools:context=".activities.RepoDetailsActivity">
+    tools:context=".activities.repo_details.RepoDetailsActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center_horizontal"
+        android:transitionName="profile"
+        android:scaleType="centerCrop">
+    </de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Owner">
+    </TextView>
+
+    <TextView
+        android:id="@+id/ownerNameTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/linkColor"
+        android:layout_marginTop="10dp"
+        android:text="Amar">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Repository name">
     </TextView>
 
     <TextView
-        android:id="@+id/nameTV"
+        android:id="@+id/repoNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/linkColor"
         android:layout_marginTop="10dp"
         android:text="Name">
     </TextView>
@@ -27,11 +54,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Last update time">
+        android:text="Creation time">
     </TextView>
 
     <TextView
-        android:id="@+id/dateTV"
+        android:id="@+id/creationDateTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
@@ -43,16 +70,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Owner">
+        android:text="Last update time">
     </TextView>
 
     <TextView
-        android:id="@+id/ownerTV"
+        android:id="@+id/lastUpdateDateTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_marginTop="10dp"
-        android:text="Amar">
+        android:text="time">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Language">
+    </TextView>
+
+    <TextView
+        android:id="@+id/languageTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:text="Java">
     </TextView>
 
     <TextView

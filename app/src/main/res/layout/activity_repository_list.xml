@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.repo_list.RepoListActivity">
 
     <EditText
         android:id="@+id/searchView"
@@ -25,6 +25,13 @@
         android:layout_marginTop="15dp">
     </androidx.recyclerview.widget.RecyclerView>
 
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
 
 
 </RelativeLayout>
