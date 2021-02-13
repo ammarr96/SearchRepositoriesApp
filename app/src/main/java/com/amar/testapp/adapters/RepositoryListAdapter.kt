@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.amar.testapp.BuildConfig
 import com.amar.testapp.R
 import com.amar.testapp.activities.repo_details.RepositoryDetailsActivity
 import com.amar.testapp.network.Repository
@@ -17,7 +19,7 @@ import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class RepoListAdapter(private var dataSet: ArrayList<Repository>, private var context: Context) : RecyclerView.Adapter<RepoListAdapter.ViewHolder>() {
+class RepositoryListAdapter(private var dataSet: ArrayList<Repository>, private var context: Context) : RecyclerView.Adapter<RepositoryListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -58,17 +60,22 @@ class RepoListAdapter(private var dataSet: ArrayList<Repository>, private var co
 
         viewHolder.userImageView.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
-                Util.openLinkInBrowser(context, repository.owner.html_url)
+                Util.openLinkInBrowser(context, repository.owner.htmlUrl)
             }
         })
 
         viewHolder.itemView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
-                val intent = Intent(context, RepositoryDetailsActivity::class.java)
-                intent.putExtra("repository", dataSet.get(position))
-                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as Activity, viewHolder.userImageView, "profile")
-                context.startActivity(intent, options.toBundle())
+                if (BuildConfig.FLAVOR == "free") {
+                    Toast.makeText(context, context.getString(R.string.this_is_free_version), Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    val intent = Intent(context, RepositoryDetailsActivity::class.java)
+                    intent.putExtra("repository", dataSet.get(position))
+                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(context as Activity, viewHolder.userImageView, "profile")
+                    context.startActivity(intent, options.toBundle())
+                }
 
             }
         })

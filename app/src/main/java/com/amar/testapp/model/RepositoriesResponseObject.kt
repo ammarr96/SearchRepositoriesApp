@@ -12,6 +12,6 @@ data class RepositoriesResponseObject(
     val incompleteResults: Boolean,
 
     @SerializedName("items")
-    var items: List<Repository>
+    var items: ArrayList<Repository>
 
 )

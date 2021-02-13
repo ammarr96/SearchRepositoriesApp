@@ -2,7 +2,7 @@ package com.amar.testapp.activities.repo_list
 
 import com.amar.testapp.network.Repository
 
-interface RepoListView {
+interface RepositoryListView {
 
     fun showRepoList(list: ArrayList<Repository>)
 

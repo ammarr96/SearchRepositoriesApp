@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApp">
-        <activity android:name=".activities.RepoDetailsActivity"></activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.repo_details.RepositoryDetailsActivity"></activity>
+        <activity android:name=".activities.repo_list.RepositoryListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

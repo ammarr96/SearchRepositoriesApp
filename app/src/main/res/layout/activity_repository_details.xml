@@ -4,114 +4,174 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     android:orientation="vertical"
-    tools:context=".activities.repo_details.RepoDetailsActivity">
+    tools:context=".activities.repo_details.RepositoryDetailsActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_gravity="center_horizontal"
-        android:transitionName="profile"
-        android:scaleType="centerCrop">
-    </de.hdodenhof.circleimageview.CircleImageView>
-
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Owner">
-    </TextView>
+        android:layout_height="?actionBarSize">
 
-    <TextView
-        android:id="@+id/ownerNameTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/linkColor"
-        android:layout_marginTop="10dp"
-        android:text="Amar">
-    </TextView>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentInsetStart="0dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Repository name">
-    </TextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/repoNameTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/linkColor"
-        android:layout_marginTop="10dp"
-        android:text="Name">
-    </TextView>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/backIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="15dp"
+                    app:srcCompat="@drawable/ic_back"
+                    android:tint="@color/white">
+                </androidx.appcompat.widget.AppCompatImageView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Creation time">
-    </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/repository_details"
+                    android:textSize="20sp"
+                    android:textColor="@color/white">
+                </TextView>
 
-    <TextView
-        android:id="@+id/creationDateTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:text="time">
-    </TextView>
+            </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Last update time">
-    </TextView>
 
-    <TextView
-        android:id="@+id/lastUpdateDateTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:text="time">
-    </TextView>
+        </com.google.android.material.appbar.MaterialToolbar>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Language">
-    </TextView>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/languageTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:text="Java">
-    </TextView>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Description">
-    </TextView>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/descTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        android:text="Desc">
-    </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_gravity="center_horizontal"
+                android:transitionName="profile"
+                android:scaleType="centerCrop">
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/owner">
+            </TextView>
+
+            <TextView
+                android:id="@+id/ownerNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/linkColor"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/repository_name">
+            </TextView>
+
+            <TextView
+                android:id="@+id/repositoryNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/linkColor"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/creation_time">
+            </TextView>
+
+            <TextView
+                android:id="@+id/creationDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/last_update_time">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lastUpdateDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/language">
+            </TextView>
+
+            <TextView
+                android:id="@+id/languageTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/description">
+            </TextView>
+
+            <TextView
+                android:id="@+id/descTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="">
+            </TextView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

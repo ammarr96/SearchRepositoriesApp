@@ -1,5 +1,6 @@
 package com.amar.testapp.activities.repo_details
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
@@ -7,63 +8,71 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
 import com.amar.testapp.R
 import com.amar.testapp.network.Repository
 import com.amar.testapp.util.Util.Companion.getDateAsString
+import com.amar.testapp.util.Util.Companion.openLinkInBrowser
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 
 
-class RepoDetailsActivity : AppCompatActivity() {
+class RepositoryDetailsActivity : AppCompatActivity() {
 
     lateinit var repo: Repository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_repo_details)
+        setContentView(R.layout.activity_repository_details)
 
-        repo = (intent.getSerializableExtra("repo") as? Repository)!!
+        repo = (intent.getSerializableExtra("repository") as? Repository)!!
 
         showData()
+
+        val backIcon: AppCompatImageView = findViewById(R.id.backIcon)
+        backIcon.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(v: View?) {
+                finish()
+            }
+
+        })
 
     }
 
     private fun showData() {
-        val repoNameTV: TextView = findViewById(R.id.repoNameTV);
+        val repositoryNameTV: TextView = findViewById(R.id.repositoryNameTV);
         val creationDateTV: TextView = findViewById(R.id.creationDateTV);
         val lastUpdateDateTV: TextView = findViewById(R.id.lastUpdateDateTV);
         val ownerNameTV: TextView = findViewById(R.id.ownerNameTV);
         val descTV: TextView = findViewById(R.id.descTV);
+        val languageTV: TextView = findViewById(R.id.languageTV);
 
         val imageView: CircleImageView = findViewById(R.id.image);
         Glide.with(applicationContext).load(repo.owner.avatarUrl).into(imageView)
 
-        repoNameTV.text = repo.name
-        repoNameTV.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+        repositoryNameTV.text = repo.name
+        repositoryNameTV.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         ownerNameTV.text = repo.owner.username
         ownerNameTV.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         descTV.text = repo.description
+        languageTV.text = repo.language
 
         creationDateTV.text = getDateAsString(repo.createdAt)
         lastUpdateDateTV.text = getDateAsString(repo.updatedAt)
 
         ownerNameTV.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
-                openLinkInBrowser(repo.owner.html_url)
+                openLinkInBrowser(applicationContext, repo.owner.htmlUrl)
             }
         })
 
-        repoNameTV.setOnClickListener(object: View.OnClickListener{
+        repositoryNameTV.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
-                openLinkInBrowser(repo.html_url)
+                openLinkInBrowser(applicationContext, repo.htmlUrl)
             }
         })
     }
 
-    fun openLinkInBrowser(url: String) {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(browserIntent)
-    }
 }
